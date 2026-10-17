@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Descubra seu plano ideal — Segredo das Esfirras</title>
+<!-- EDITAR: cole aqui o código base do Meta Pixel (o mesmo que você colocou no site) -->
+<style>
+  :root{
+    --bg:#ffffff; --soft:#fffaf5; --text:#2b1a12; --muted:#76665c;
+    --accent:#c9402a; --accent-dark:#a3301c; --gold:#cb9440; --line:#efe1d1;
+    --green:#2f8a57; --green-dark:#256f46; --green-soft:#eaf6ef;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:Georgia,'Times New Roman',serif; line-height:1.55; -webkit-font-smoothing:antialiased; min-height:100vh}
+  .wrap{max-width:600px; margin:0 auto; padding:0 20px}
+
+  .topbar{border-bottom:1px solid var(--line); padding:14px 0; text-align:center}
+  #logo{max-height:46px; max-width:200px; display:inline-block}
+  .brand{font-size:.8rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); font-weight:bold}
+
+  .progress{padding:18px 0 4px}
+  .pbar{height:10px; background:#f4e9dc; border-radius:999px; overflow:hidden}
+  .pfill{height:100%; width:0; background:linear-gradient(90deg,var(--gold),var(--accent)); border-radius:999px; transition:width .45s ease}
+  .plabel{display:flex; justify-content:space-between; font-size:.78rem; color:var(--muted); margin-top:7px}
+
+  #app{padding:18px 0 40px}
+  .screen{animation:fade .35s ease}
+  @keyframes fade{from{opacity:0; transform:translateY(8px)}to{opacity:1; transform:none}}
+  .kicker{text-align:center; text-transform:uppercase; letter-spacing:.12em; font-size:.74rem; color:var(--accent); font-weight:bold; margin:6px 0 10px}
+  h1{font-size:1.55rem; line-height:1.3; text-align:center; margin:0 0 8px}
+  .hint{text-align:center; color:var(--muted); font-size:.92rem; margin:0 auto 20px; max-width:460px}
+  .opts{display:flex; flex-direction:column; gap:12px; margin-top:20px}
+  .opt{
+    width:100%; text-align:left; background:#fff; border:2px solid var(--line); border-radius:16px;
+    padding:16px 18px; font:inherit; font-size:1rem; color:var(--text); cursor:pointer;
+    box-shadow:0 4px 14px rgba(43,26,18,.04); transition:border-color .15s, background .15s, transform .1s;
+  }
+  .opt:hover{border-color:var(--gold)}
+  .opt:active{transform:scale(.99)}
+  .opt.sel{border-color:var(--accent); background:#fff4ef}
+  .back{display:block; margin:18px auto 0; background:none; border:0; color:var(--muted); font:inherit; font-size:.85rem; text-decoration:underline; cursor:pointer}
+  .note{text-align:center; color:var(--muted); font-size:.78rem; margin-top:14px}
+
+  .compare{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:6px 0 4px}
+  .cmp{background:var(--soft); border:1px solid var(--line); border-radius:14px; padding:12px; text-align:center; font-size:.82rem; color:var(--muted)}
+  .cmp svg{display:block; margin:0 auto 6px}
+  .cmp b{display:block; color:var(--text); font-size:.88rem}
+
+  .loader{text-align:center; padding:60px 0}
+  .spin{width:54px; height:54px; margin:0 auto 18px; border:5px solid #f4e9dc; border-top-color:var(--accent); border-radius:50%; animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .result{background:#fff; border:2px solid var(--accent); border-radius:24px; padding:26px 20px; text-align:center; box-shadow:0 16px 38px rgba(201,64,42,.13)}
+  .okpill{display:inline-block; background:var(--green-soft); color:var(--green-dark); border:1px solid #cfe8d9; font-weight:bold; font-size:.76rem; letter-spacing:.04em; padding:6px 14px; border-radius:999px; margin-bottom:14px}
+  .result h2{font-size:1.5rem; line-height:1.3; margin:0 0 10px}
+  .result p.txt{color:var(--muted); margin:0 auto 16px; max-width:460px}
+  .cover{display:flex; justify-content:center; margin:6px 0 14px}
+  .bul{list-style:none; padding:0; margin:0 auto 20px; max-width:420px; text-align:left}
+  .bul li{padding:8px 0 8px 32px; position:relative; font-size:.97rem}
+  .bul li:before{content:"✓"; position:absolute; left:0; top:8px; width:22px; height:22px; border-radius:50%; background:var(--green-soft); color:var(--green-dark); font-size:.8rem; font-weight:bold; display:flex; align-items:center; justify-content:center}
+  .cta{display:block; background:var(--accent); color:#fff; text-decoration:none; font-weight:bold; font-size:1.05rem; padding:18px 18px; border-radius:14px; box-shadow:0 10px 24px rgba(201,64,42,.3)}
+  .cta:hover{background:var(--accent-dark)}
+  .secure{margin-top:14px; font-size:.78rem; color:var(--muted)}
+  footer{border-top:1px solid var(--line); padding:22px 0 34px; text-align:center; color:var(--muted); font-size:.75rem}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <!-- LOGO: envie sua logo para /logo.png (ou troque o caminho em src). Sem arquivo, aparece o nome da marca. -->
+  <img id="logo" src="/logo.png" alt="Segredo das Esfirras" onerror="this.style.display='none';document.getElementById('brandText').style.display='block'">
+  <div id="brandText" class="brand" style="display:none">Segredo das Esfirras</div>
+</div>
+
+<div class="wrap">
+  <div class="progress">
+    <div class="pbar"><div class="pfill" id="pfill"></div></div>
+    <div class="plabel"><span id="pstep"></span><span id="ppct"></span></div>
+  </div>
+  <div id="app"></div>
+</div>
+
+<footer><div class="wrap">© 2026 Segredo das Esfirras. Todos os direitos reservados.<br>Os resultados variam de pessoa para pessoa e dependem da sua dedicação.</div></footer>
+
+<script>
+  // ===== EDITAR AQUI =====
+  var CHECKOUT_URL = "#";   // link do checkout no Paradise
+  var ALT_URL      = "#";   // link para quem respondeu "não tenho tempo" (pode ser o mesmo do checkout)
+  var PRICE        = "R$ 24,99";
+  // =======================
+
+  function track(ev){ try{ if(window.fbq){ fbq('track', ev); } }catch(e){} }
+
+  var Q = [
+    { kicker:"Pergunta 1 de 5", title:"Qual é o seu objetivo com as esfirras hoje?",
+      hint:"Responda 5 perguntas rápidas e descubra o plano ideal para você.",
+      opts:[ ["vender","Quero começar a vender e ter uma renda extra 💰"],
+             ["familia","Quero aprender a fazer em casa para a família 🥰"],
+             ["melhorar","Já vendo e quero melhorar meus resultados 📈"] ] },
+    { kicker:"Pergunta 2 de 5", title:"Você já tentou fazer esfirra antes?", compare:true,
+      opts:[ ["tentei","Já tentei, mas a massa ficou seca ou o recheio vazou"],
+             ["medo","Nunca tentei, tenho medo de errar"],
+             ["faco","Já faço, mas tenho dificuldade para vender"] ] },
+    { kicker:"Pergunta 3 de 5", title:"Quanto você gostaria de ganhar por mês com esfirras?",
+      hint:"Esta é apenas a sua meta pessoal, não uma promessa de resultado.",
+      opts:[ ["1k","De R$ 1.000 a R$ 2.000 já me ajudaria muito"],
+             ["3k","De R$ 3.000 a R$ 5.000, quero fazer disso minha renda principal"],
+             ["bemfeito","Só quero fazer bem feito, o resto é consequência"] ] },
+    { kicker:"Pergunta 4 de 5", title:"Para começar, você precisa de poucos ingredientes e cerca de 2 horas livres. Você tem esse tempo?",
+      opts:[ ["sim","Sim, eu tenho!"],
+             ["fds","Tenho só no fim de semana"],
+             ["nao","Não tenho tempo agora"] ] },
+    { kicker:"Pergunta 5 de 5", title:"O que mais te impede de começar hoje?",
+      opts:[ ["receitas","Não tenho receitas certas e confiáveis"],
+             ["preco","Não sei precificar e tenho medo de não vender"],
+             ["conservar","Não sei conservar ou congelar sem perder a qualidade"] ] }
+  ];
+
+  var step = 0, answers = [];
+  var app = document.getElementById("app");
+
+  function setProgress(pos){ // pos: 1..6
+    var pct = Math.round(pos / (Q.length + 1) * 100);
+    document.getElementById("pfill").style.width = pct + "%";
+    document.getElementById("ppct").textContent = pct + "% concluído";
+    document.getElementById("pstep").textContent = pos <= Q.length ? "Pergunta " + pos + " de " + Q.length : "Seu plano está pronto";
+  }
+
+  function pastry(fill){
+    return '<svg width="64" height="64" viewBox="0 0 70 70"><path d="M35 12 L58 55 L12 55 Z" fill="'+fill+'" stroke="#c9402a" stroke-width="2.5" stroke-linejoin="round"/><ellipse cx="35" cy="40" rx="12" ry="6" fill="#c9402a" opacity=".85"/></svg>';
+  }
+
+  function renderQuestion(){
+    var q = Q[step];
+    setProgress(step + 1);
+    var h = '<div class="screen"><div class="kicker">'+q.kicker+'</div><h1>'+q.title+'</h1>';
+    if(q.hint){ h += '<p class="hint">'+q.hint+'</p>'; }
+    if(q.compare){
+      h += '<div class="compare"><div class="cmp">'+pastry("#d9b98a")+'<b>Esfirra seca</b>massa dura, sem graça</div>'
+         + '<div class="cmp">'+pastry("#eab566")+'<b>Esfirra macia</b>fofinha e suculenta</div></div>';
+    }
+    h += '<div class="opts">';
+    q.opts.forEach(function(o, i){
+      h += '<button class="opt" data-i="'+i+'">'+o[1]+'</button>';
+    });
+    h += '</div>';
+    if(step > 0){ h += '<button class="back" id="back">← Voltar</button>'; }
+    h += '</div>';
+    app.innerHTML = h;
+
+    var btns = app.querySelectorAll(".opt");
+    btns.forEach(function(b){
+      b.addEventListener("click", function(){
+        btns.forEach(function(x){ x.classList.remove("sel"); });
+        b.classList.add("sel");
+        answers[step] = q.opts[+b.getAttribute("data-i")][0];
+        setTimeout(function(){ step++; next(); }, 320);
+      });
+    });
+    var back = document.getElementById("back");
+    if(back){ back.addEventListener("click", function(){ step--; next(); }); }
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function next(){
+    if(step < Q.length){ renderQuestion(); } else { renderLoading(); }
+  }
+
+  function renderLoading(){
+    setProgress(Q.length + 1);
+    app.innerHTML = '<div class="screen loader"><div class="spin"></div><h1>Analisando suas respostas...</h1><p class="hint">Montando o plano ideal para o seu perfil.</p></div>';
+    setTimeout(renderResult, 1900);
+  }
+
+  function renderResult(){
+    var goal = answers[0], block = answers[4], lowTime = answers[3] === "nao";
+    var first = {
+      receitas:"Receitas testadas, com passo a passo claro, do zero",
+      preco:"Guia de precificação para você saber quanto cobrar",
+      conservar:"Como conservar e congelar sem perder a qualidade"
+    }[block];
+
+    var title, txt, url, cta;
+    if(lowTime){
+      title = "Sem problema! Dá para começar no seu ritmo.";
+      txt = "O método é dividido em passos curtos, para você avançar quando tiver um tempinho livre, inclusive aos fins de semana.";
+      url = ALT_URL; cta = "QUERO VER O MÉTODO POR " + PRICE;
+    } else {
+      title = "Perfeito! Separei um plano ideal pra você.";
+      txt = goal === "vender"
+        ? "Com base nas suas respostas, o melhor caminho para você é começar pelas esfirras clássicas e aprender a montar combos para vender."
+        : goal === "familia"
+        ? "Com base nas suas respostas, o melhor caminho para você é dominar a massa e os recheios clássicos, com receitas que dão certo em casa."
+        : "Com base nas suas respostas, o melhor caminho para você é aprimorar a massa, padronizar a produção e ajustar seus preços.";
+      url = CHECKOUT_URL; cta = "QUERO VER MEU PLANO POR " + PRICE;
+    }
+
+    var cover = '<svg width="120" height="150" viewBox="0 0 120 150"><rect x="6" y="4" width="108" height="142" rx="8" fill="#fffaf5" stroke="#cb9440" stroke-width="3"/><rect x="6" y="4" width="14" height="142" rx="6" fill="#c9402a"/><text x="68" y="40" font-size="11" text-anchor="middle" fill="#cb9440" font-family="Georgia" letter-spacing="2">SEGREDO DAS</text><text x="68" y="62" font-size="20" font-weight="bold" text-anchor="middle" fill="#c9402a" font-family="Georgia">ESFIRRAS</text><path d="M68 76 L96 120 L40 120 Z" fill="#eab566" stroke="#c9402a" stroke-width="2.5" stroke-linejoin="round"/><ellipse cx="68" cy="106" rx="12" ry="5" fill="#c9402a" opacity=".85"/></svg>';
+
+    app.innerHTML =
+      '<div class="screen"><div class="result">'
+      + '<span class="okpill">✓ PLANO PERSONALIZADO PRONTO</span>'
+      + '<h2>'+title+'</h2><p class="txt">'+txt+'</p>'
+      + '<div class="cover">'+cover+'</div>'
+      + '<ul class="bul"><li>'+first+'</li><li>Massa macia e recheios que não vazam</li><li>Tabela de preços e modelo de pedidos prontos</li></ul>'
+      + '<a class="cta" id="cta" href="'+url+'">'+cta+'</a>'
+      + '<p class="secure">🔒 Pagamento seguro • ⚡ Acesso imediato • 🛡️ Garantia de 7 dias</p>'
+      + '</div></div>';
+
+    track("ViewContent");
+    document.getElementById("cta").addEventListener("click", function(){ track("InitiateCheckout"); });
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  next();
+</script>
+</body>
+</html>
