@@ -15,7 +15,18 @@
   body{margin:0; background:var(--bg); color:var(--text); font-family:Georgia,'Times New Roman',serif; line-height:1.55; -webkit-font-smoothing:antialiased; min-height:100vh}
   .wrap{max-width:600px; margin:0 auto; padding:0 20px}
 
-  .topbar{border-bottom:1px solid var(--line); padding:14px 0; text-align:center}
+  .topbar{
+        border-bottom:1px solid var(--line); 
+        padding:14px 0; 
+        text-align:center; 
+        background-image:url("/capa2.png");
+        background-position: top;
+        background-repeat:no-repeat;
+        background-size:auto;
+        background-attachment:fixed;
+        height:45vh; width:100vw;
+      
+  }
   #logo{max-height:46px; max-width:200px; display:inline-block}
   .brand{font-size:.8rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); font-weight:bold}
 
@@ -69,7 +80,7 @@
 
 <div class="topbar">
   <!-- LOGO: envie sua logo para /logo.png (ou troque o caminho em src). Sem arquivo, aparece o nome da marca. -->
-  <img id="logo" src="/logo.png" alt="Segredo das Esfirras" onerror="this.style.display='none';document.getElementById('brandText').style.display='block'">
+  <img id="logo" src="/" alt="Segredo das Esfirras" onerror="this.style.display='none';document.getElementById('brandText').style.display='block'">
   <div id="brandText" class="brand" style="display:none">Segredo das Esfirras</div>
 </div>
 
